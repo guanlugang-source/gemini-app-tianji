@@ -9,14 +9,15 @@ import re
 # ==========================================
 # 🔑 配置区域
 # ==========================================
-# 1. 获取 API Key (只写这一行就够了)
 try:
-    api_key = st.secrets["GOOGLE_API_KEY"]
-    genai.configure(api_key=api_key)
+    # 1. 获取 Key 并赋值给 GOOGLE_API_KEY 变量 (修复报错的关键)
+    GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
+    
+    # 2. 配置 Gemini
+    genai.configure(api_key=GOOGLE_API_KEY)
 except Exception as e:
-    st.error("❌ 未找到 API Key，请在 Streamlit Cloud 的 Advanced Settings -> Secrets 中配置 GOOGLE_API_KEY")
+    st.error("❌ 未找到 API Key，请在 Streamlit Cloud 配置 Secrets")
     st.stop()
-
 # ==========================================
 # ⚙️ 策略核心参数
 # ==========================================
