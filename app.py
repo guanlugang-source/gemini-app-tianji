@@ -10,7 +10,7 @@ import re
 # 🔑 配置区域
 # ==========================================
 try:
-    # 1. 获取 Key 并赋值给 GOOGLE_API_KEY 变量 (修复报错的关键)
+    # 1. 关键修改：必须用 GOOGLE_API_KEY 这个大写名字，下面的代码才能认出来
     GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
     
     # 2. 配置 Gemini
