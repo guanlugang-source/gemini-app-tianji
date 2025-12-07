@@ -1,5 +1,4 @@
 import streamlit as st
-GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 import google.generativeai as genai
 import pandas as pd
 import requests
@@ -7,13 +6,16 @@ import json
 from datetime import datetime, timedelta
 import re
 
-
 # ==========================================
-# 🔑 配置区域 (请在此处填入您的 Key)
+# 🔑 配置区域
 # ==========================================
-# 从 Streamlit 的秘密保险箱中读取 Key
-api_key = st.secrets["GOOGLE_API_KEY"]
-genai.configure(api_key=api_key)
+# 1. 获取 API Key (只写这一行就够了)
+try:
+    api_key = st.secrets["GOOGLE_API_KEY"]
+    genai.configure(api_key=api_key)
+except Exception as e:
+    st.error("❌ 未找到 API Key，请在 Streamlit Cloud 的 Advanced Settings -> Secrets 中配置 GOOGLE_API_KEY")
+    st.stop()
 
 # ==========================================
 # ⚙️ 策略核心参数
