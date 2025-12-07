@@ -1,10 +1,12 @@
 import streamlit as st
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 import google.generativeai as genai
 import pandas as pd
 import requests
 import json
 from datetime import datetime, timedelta
 import re
+
 
 # ==========================================
 # 🔑 配置区域 (请在此处填入您的 Key)
